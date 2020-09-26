@@ -20,3 +20,20 @@ jobs:
       - name: Run Tests
         run: |
           python -m unittest discover tests/
+  deployment:
+    needs: test_suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fresh clone & repo install
+        uses: appleboy/ssh-action@master
+        with:
+          host: 3.229.170.248
+          username: github-actions
+          key: ${{ secrets.SSHKEY }}
+          port: 22
+          script: |
+            rm -rf Surf-report
+            git clone https://github.com/Karen-Stewart80/Surf-report.git
+            python3.8 -m venv /home/github-actions/Surf-report/venv
+            source /home/github-actions/Surf-report/venv/bin/activate
+            pip install -r /home/github-actions/Surf-report/requirements.txt

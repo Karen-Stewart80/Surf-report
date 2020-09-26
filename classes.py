@@ -2,29 +2,6 @@ import requests
 import json
 
 
-#current=time.time
-
-# params = {
-    
-#     'lat':'28.0167',
-#     'lng': '153.4000',
-#     'params': 'waveHeight,windSpeed',
-# }
-
-# headers={
-#     'Authorization': '830cd6de-fc63-11ea-aa62-0242ac130002-830cd828-fc63-11ea-aa62-0242ac130002'
-#  }
-
-
-#response = requests.get('https://api.stormglass.io/v2/weather/point',params=params,headers=headers)
-
-
-# Do something with response data.
-#data= json.loads(response.text)
-#print(data['hours'][7]['waveHeight']['icon'])
-
-
-
 class Surf:
     
     def __init__(self):
