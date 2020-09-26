@@ -57,7 +57,7 @@ class Surf:
        return requests.get('https://api.stormglass.io/v2/weather/point',params=params,headers=headers)
        
     def times(self):
-        chosen_time= int(input("What time is your bodacious self looking to carve?\n "))
+        chosen_time= int(input("What time is your bodacious self looking to carve? \n "))
         return chosen_time
         
         
