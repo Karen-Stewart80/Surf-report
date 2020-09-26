@@ -1,37 +1,22 @@
 import requests
 import json
-from datetime import datetime
-from time import time
+
 
 #current=time.time
 
-now=datetime.now()
-
-current_time = now.strftime("%H:%M:%S")
-print("Current Time =", current_time)
-
-
-import datetime
-
-
-print(datetime.datetime.fromtimestamp(
-        int("1284105682")
-    ).strftime('%Y-%m-%d %H:%M:%S')
-)
-
-params = {
+# params = {
     
-    'lat':'28.0167',
-    'lng': '153.4000',
-    'params': 'waveHeight,windSpeed',
-}
+#     'lat':'28.0167',
+#     'lng': '153.4000',
+#     'params': 'waveHeight,windSpeed',
+# }
 
-headers={
-    'Authorization': '830cd6de-fc63-11ea-aa62-0242ac130002-830cd828-fc63-11ea-aa62-0242ac130002'
- }
+# headers={
+#     'Authorization': '830cd6de-fc63-11ea-aa62-0242ac130002-830cd828-fc63-11ea-aa62-0242ac130002'
+#  }
 
 
-response = requests.get('https://api.stormglass.io/v2/weather/point',params=params,headers=headers)
+#response = requests.get('https://api.stormglass.io/v2/weather/point',params=params,headers=headers)
 
 
 # Do something with response data.
@@ -44,7 +29,6 @@ class Surf:
     
     def __init__(self):
         self.url='https://api.stormglass.io/v2/weather/point'
-        self.location='location'
         self.waveHeight='waveHeight'
         self.windSpeed='windSpeed'
         self.data=self.get()
@@ -54,16 +38,28 @@ class Surf:
       
         
     def get(self):
-       return requests.get('https://api.stormglass.io/v2/weather/point',params=params,headers=headers)
+        
+        params = {
+            'lat':'28.0167',
+            'lng': '153.4000',
+            'params': 'waveHeight,windSpeed',
+        }
+        
+        headers={
+            'Authorization': '830cd6de-fc63-11ea-aa62-0242ac130002-830cd828-fc63-11ea-aa62-0242ac130002'
+         }
+
+        response=requests.get('https://api.stormglass.io/v2/weather/point',params=params,headers=headers)
+       
+        if response.status_code >= 400:
+            print("Sorry, looks like an api error, try again.")
+        return response
        
     def times(self):
         chosen_time= int(input("What time is your bodacious self looking to carve? \n "))
+            
         return chosen_time
         
-        
-    def locations(self):
-        #location Gold Coast
-        return "Surf Report for the Gold Coast"
     
     def waves(self):
        # return waveHeight
