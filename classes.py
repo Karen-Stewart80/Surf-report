@@ -62,7 +62,7 @@ class Surf:
         
         
     def locations(self):
-        #input location
+        #location Gold Coast
         return "Surf Report for the Gold Coast"
     
     def waves(self):
@@ -77,11 +77,22 @@ class Surf:
        return data['hours'][self.chosen_time]['windSpeed']['icon']
    
     def surf_report(self):
-       return f"Wave height is {self.wavereport}windspeed is {self.windreport}"
-       
-word=Surf()
+      
+        if self.wavereport < 2 :
+            print("Dude, might need the Malibu. Perfect for all you new tube chasers")
+    
+     
+        elif self.wavereport > 2 and self.wavereport< 4:
+            print("Surf's up. Enjoy bros")
+    
+        elif self.wavereport > 4 and self.wavereport < 6 :
+            print("Yewww. Barrels are pumping")
+    
+        else:
+            print("Hectic! All you Bodhi's  gonna carve it up. Most excellent!")
+     
+        return f"Wave height is {self.wavereport} windspeed is {self.windreport}"
 
-print(word.surf_report())
        
        
       
