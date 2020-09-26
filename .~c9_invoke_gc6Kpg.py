@@ -48,17 +48,14 @@ class Surf:
         self.waveHeight='waveHeight'
         self.windSpeed='windSpeed'
         self.data=self.get()
-        self.chosen_time=self.times()
         self.wavereport=self.waves()
         self.windreport=self.wind()
-      
         
     def get(self):
        return requests.get('https://api.stormglass.io/v2/weather/point',params=params,headers=headers)
        
     def times(self):
-        chosen_time= int(input("What time is your bodacious self looking to carve?\n "))
-        return chosen_time
+        input("What time is your bodacious self looking to carve?\n ")
         
         
     def locations(self):
@@ -68,16 +65,16 @@ class Surf:
     def waves(self):
        # return waveHeight
        data= json.loads(self.data.text)
-       return data['hours'][self.chosen_time]['waveHeight']['icon']
+       return data['hours'][7]['waveHeight']['icon']
        
    
     def wind(self):
        #returns the windspeed
        data= json.loads(self.data.text)
-       return data['hours'][self.chosen_time]['windSpeed']['icon']
+       return data['hours'][7]['windSpeed']['icon']
    
     def surf_report(self):
-       return f"Wave height is {self.wavereport}windspeed is {self.windreport}"
+       return self.wavereport+self.windreport
        
 word=Surf()
 
