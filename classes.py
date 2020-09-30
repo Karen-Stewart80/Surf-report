@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 
 
 class Surf:
@@ -22,7 +23,7 @@ class Surf:
         }
 
         headers = {
-            'Authorization': '830cd6de-fc63-11ea-aa62-0242ac130002-830cd828-fc63-11ea-aa62-0242ac130002'
+            'Authorization': os.environ.get('API_KEY')
         }
 
         response = requests.get(
@@ -34,9 +35,12 @@ class Surf:
             print("Sorry, looks like an api error, try again.")
         return response
 
-    def times(self):
+    def times(self)->int:
+        
         chosen_time = int(
             input("What time is your bodacious self looking to carve? \n "))
+        while chosen_time >24 or chosen_time<0:
+            chosen_time = int(input("try again"))
 
         return chosen_time
 
