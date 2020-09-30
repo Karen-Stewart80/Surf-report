@@ -32,11 +32,12 @@ class Surf:
             headers=headers)
 
         if response.status_code >= 400:
+            #checks to see if appropriate response from api is acquired
             print("Sorry, looks like an api error, try again.")
         return response
 
     def times(self)->int:
-        
+        #checks to ensure time is input as an integer and in 24hr time
         chosen_time = int(
             input("What time is your bodacious self looking to carve? \n "))
         while chosen_time >24 or chosen_time<0:
@@ -55,6 +56,7 @@ class Surf:
         return data['hours'][self.chosen_time]['windSpeed']['icon']
 
     def surf_report(self):
+        #tells the user how good the waves are in surfer lingo
 
         if self.wavereport < 2:
             print("Dude, might need the Malibu. Perfect for all you new tube chasers")
